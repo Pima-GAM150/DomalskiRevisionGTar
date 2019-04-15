@@ -8,9 +8,9 @@ public class Guitarput : MonoBehaviour {
 	public AudioSource audio;
 
 	void Start() {
-		audio.clip = Microphone.Start("Rocksmith", true, 10, 48000);
+		/*audio.clip = Microphone.Start("Rocksmith", true, 10, 48000);
 		while (!(Microphone.GetPosition("Rocksmith") > 0)){Debug.Log("wait");} // Wait until the recording has started
-		Debug.Log("Go!");
+		Debug.Log("Go!");*/
 		audio.Play(); // Play the audio source!
 	}
 
