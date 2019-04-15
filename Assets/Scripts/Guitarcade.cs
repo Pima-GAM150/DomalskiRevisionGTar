@@ -21,6 +21,25 @@ public class Guitarcade : MonoBehaviour {
 	
 	}
 
+	void OnCollisionEnter2D(Collision2D collision){
+
+
+		if(collision.tag.Equals("PlayerBullet")){
+
+
+			currentHealth--;
+			if(currentHealth <= 0){
+
+				GameOver();
+
+			}
+
+		}
+
+	}
+
+	void GameOver(){}
+
 	IEnumerator PatternController () {
 
 		while (true) {
