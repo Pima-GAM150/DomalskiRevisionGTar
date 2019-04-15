@@ -7,7 +7,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 
-	public float moveSpeed, invulTimer, InvulMax;
+	public float moveSpeed, invulTimer, invulMax;
 	public int lives;
 	public bool wasDamaged;
 
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 
-		if(collision.tag.Equals("Bullet") && !wasDamaged){
+		if(collision.gameObject.tag.Equals("Bullet") && !wasDamaged){
 
 			lives--;
 			if(lives < 0){

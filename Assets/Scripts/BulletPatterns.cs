@@ -8,13 +8,13 @@ public class BulletPatterns : MonoBehaviour {
 
 
 
-	public GameObject gTar, ship;
-	public GameObject basicBullet, splitBullet;
-	private Vector3 gPos, sPos;
+	public static GameObject gTar, ship;
+	public static GameObject basicBullet, splitBullet;
+	private static Vector3 gPos, sPos;
 
 	void Start(){gPos = gTar.GetComponent<Transform>().position; }
 
-	public void spawnBullet(float xDir, float yDir, GameObject bulletType, Vector3 spawn){
+	public static void spawnBullet(float xDir, float yDir, GameObject bulletType, Vector3 spawn){
 
 		GameObject x = (GameObject)Instantiate (bulletType, spawn, Quaternion.identity);
 		BasicBulletMovement y = x.GetComponent<BasicBulletMovement> ();
@@ -22,7 +22,7 @@ public class BulletPatterns : MonoBehaviour {
 		y.yDir = yDir;
 	}
 
-	public void spawnSplitterBullet(float xDir, float yDir, GameObject bulletType, Vector3 spawn){
+	public static void spawnSplitterBullet(float xDir, float yDir, GameObject bulletType, Vector3 spawn){
 
 		GameObject x = (GameObject)Instantiate (bulletType, spawn, Quaternion.identity);
 		SplitBulletMovement y = x.GetComponent<SplitBulletMovement> ();
@@ -32,7 +32,7 @@ public class BulletPatterns : MonoBehaviour {
 
 	}
 
-	void spawnBullet(float xDir, float yDir, GameObject bulletType){
+	static void spawnBullet(float xDir, float yDir, GameObject bulletType){
 
 		GameObject x = (GameObject)Instantiate (bulletType, gPos, Quaternion.identity);
 		BasicBulletMovement y = x.GetComponent<BasicBulletMovement> ();
@@ -40,7 +40,7 @@ public class BulletPatterns : MonoBehaviour {
 		y.yDir = yDir;
 	}
 
-	public void CirclePattern1(){
+	public static void CirclePattern1(){
 
 		spawnBullet (-1f, 0f, basicBullet);
 		spawnBullet (1f, 0f, basicBullet);
@@ -55,7 +55,7 @@ public class BulletPatterns : MonoBehaviour {
 		spawnBullet (0.5878f, -0.809f, basicBullet);
 	}
 
-	public void CirclePattern2(){
+	public static void CirclePattern2(){
 
 		spawnBullet (-0.9877f, -0.1564f, basicBullet);
 		spawnBullet (0.9877f, -0.1564f, basicBullet);
@@ -69,7 +69,7 @@ public class BulletPatterns : MonoBehaviour {
 		spawnBullet (0.7071f, -0.7071f, basicBullet);
 	}
 
-	public void TargetedPattern1(){
+	public static void TargetedPattern1(){
 
 		sPos = ship.GetComponent<Transform>().position;
 		Vector3 normal = new Vector3 (sPos.x - gPos.x, sPos.y - gPos.y);
@@ -80,7 +80,7 @@ public class BulletPatterns : MonoBehaviour {
 		spawnBullet (normal.x, normal.y, basicBullet);
 	}
 
-	public void TargetedPattern2(){
+	public static void TargetedPattern2(){
 
 		sPos = ship.GetComponent<Transform>().position;
 		Vector3 normal = new Vector3 (sPos.x - gPos.x, sPos.y - gPos.y);
@@ -92,7 +92,7 @@ public class BulletPatterns : MonoBehaviour {
 		spawnBullet (Mathf.Cos (angle - 24), Mathf.Sin (angle - 24), basicBullet);
 	}
 
-	public void TargetedPattern3(){
+	public static void TargetedPattern3(){
 
 		sPos = ship.GetComponent<Transform>().position;
 		float root3Side = Mathf.Sqrt(3) * 3f;
@@ -110,7 +110,7 @@ public class BulletPatterns : MonoBehaviour {
 		TargetedPattern3BulletSpawner (sPos.x + 3, sPos.y - root3Side, basicBullet);
 	}
 
-	public void SplitterPattern1(){
+	public static void SplitterPattern1(){
 
 		spawnSplitterBullet (-1f, 0f, splitBullet, gPos);
 		spawnSplitterBullet (1f, 0f, splitBullet, gPos);
@@ -126,7 +126,7 @@ public class BulletPatterns : MonoBehaviour {
 
 	}
 
-	void TargetedPattern3BulletSpawner(float xPos, float yPos, GameObject bulletType){
+	static void TargetedPattern3BulletSpawner(float xPos, float yPos, GameObject bulletType){
 
 		Vector3 normal = new Vector3 (sPos.x - xPos, sPos.y - yPos);
 		normal = normal / normal.magnitude;

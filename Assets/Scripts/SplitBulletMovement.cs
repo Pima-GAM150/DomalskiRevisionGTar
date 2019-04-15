@@ -7,7 +7,7 @@ public class SplitBulletMovement : MonoBehaviour {
 	public GameObject boolet;
 	//private float splitTimer = 0;
 	private Transform transform;
-	public BulletPatterns bulletSpawner;
+	//public BulletPatterns bulletSpawner;
 	public bool isActivated;
 
 	// Use this for initialization
@@ -30,18 +30,18 @@ public class SplitBulletMovement : MonoBehaviour {
 
 				if (boolet.tag.Equals ("BasicBullet")) {
 					//isActivated = false;
-					bulletSpawner.spawnBullet (xDir, yDir, boolet, transform.position);
-					bulletSpawner.spawnBullet (-1 * xDir, yDir, boolet, transform.position);
-					bulletSpawner.spawnBullet (-1 * xDir, -1 * yDir, boolet, transform.position);
-					bulletSpawner.spawnBullet (xDir, -1 * yDir, boolet, transform.position);
+					BulletPatterns.spawnBullet (xDir, yDir, boolet, transform.position);
+					BulletPatterns.spawnBullet (-1 * xDir, yDir, boolet, transform.position);
+					BulletPatterns.spawnBullet (-1 * xDir, -1 * yDir, boolet, transform.position);
+					BulletPatterns.spawnBullet (xDir, -1 * yDir, boolet, transform.position);
 					//Destroy(boolet);
 					Destroy (gameObject);
 
 				} else {
-					bulletSpawner.spawnSplitterBullet (xDir, yDir, boolet, transform.position);
-					bulletSpawner.spawnSplitterBullet (-1 * xDir, yDir, boolet, transform.position);
-					bulletSpawner.spawnSplitterBullet (-1 * xDir, -1 * yDir, boolet, transform.position);
-					bulletSpawner.spawnSplitterBullet (xDir, -1 * yDir, boolet, transform.position);
+					BulletPatterns.spawnSplitterBullet (xDir, yDir, boolet, transform.position);
+					BulletPatterns.spawnSplitterBullet (-1 * xDir, yDir, boolet, transform.position);
+					BulletPatterns.spawnSplitterBullet (-1 * xDir, -1 * yDir, boolet, transform.position);
+					BulletPatterns.spawnSplitterBullet (xDir, -1 * yDir, boolet, transform.position);
 					Destroy (gameObject);
 				}
 
