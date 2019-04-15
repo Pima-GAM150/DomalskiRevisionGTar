@@ -7,7 +7,10 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 
-	public float moveSpeed;
+	public float moveSpeed, invulTimer, InvulMax;
+	public int lives;
+	public bool wasDamaged;
+
 	
 	void Update(){
 
@@ -23,7 +26,40 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.W) && transform.position.y < 5f)
 			transform.Translate (new Vector2 (0, 1) * moveSpeed * Time.deltaTime);
+
+		if(wasDamaged){
+
+			invulTimer += Time.deltaTime;
+
+			if(invulTimer >= invulMax){
+
+				wasDamaged = false;
+
+			}
+
+		}
 	
+	}
+
+	void GameOver(){}
+
+	void OnCollisionEnter2D(Collision2D collision){
+
+		if(collision.tag.Equals("Bullet") && !wasDamaged){
+
+			lives--;
+			if(lives < 0){
+
+				GameOver();
+
+			}
+
+			wasDamaged = true;
+			invulTimer = 0;
+
+		}
+
+
 	}
 
 
