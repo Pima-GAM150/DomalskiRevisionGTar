@@ -47,58 +47,60 @@ public class Guitarcade : MonoBehaviour {
 
 			if (Input.GetKey (KeyCode.E))
 				BulletPatterns.SplitterPattern1 ();
+
+		int temp = MIDI % 12;
 	
 
 		switch (MIDI) {
-		case 24: case 36: case 48: case 60:	case 72: case 84: case 96:
+		case 0:
 			label.text = "" + MIDI + ": C";
 				BulletPatterns.TargetedPattern3 ();
 				effectiveWait = 0.8f;
 			break;
-		case 25: case 37: case 49: case 61: case 73: case 85: case 97:
+		case 1:
 			label.text = "" + MIDI + ": Db/C#";
 			break;
-		case 26: case 38: case 50: case 62: case 74: case 86: case 98:
+		case 2:
 			label.text = "" + MIDI + ": D";
 				BulletPatterns.SplitterPattern1();
 				effectiveWait = 3f;
 			break;
-		case 27: case 39: case 51: case 63: case 75: case 87: case 99:
+		case 3:
 			label.text = "" + MIDI + ": Eb/D#";
 				BulletPatterns.CirclePattern1 ();
 				effectiveWait = 0.8f;
 			break;
-		case 28: case 40: case 52: case 64: case 76: case 88: case 100:
+		case 4:
 			label.text = "" + MIDI + ": E";
 
 			break;
-		case 29: case 41: case 53: case 65: case 77: case 89: case 101:
+		case 5:
 			label.text = "" + MIDI + ": F";
 				BulletPatterns.CirclePattern1 ();
 				effectiveWait = 0.8f;
 			break;
-		case 30: case 42: case 54: case 66: case 78: case 90: case 102:
+		case 6:
 			label.text = "" + MIDI + ": Gb/F#";
 			break;
-		case 31: case 43: case 55: case 67: case 79: case 91: case 103:
+		case 7:
 			label.text = "" + MIDI + ": G";
 				BulletPatterns.CirclePattern2 ();
 				effectiveWait = 0.8f;
 			break;
-		case 32: case 44: case 56: case 68: case 80: case 92: case 104:
+		case 8:
 			label.text = "" + MIDI + ": Ab/G#";
 				BulletPatterns.TargetedPattern1 ();
 				effectiveWait = 0.5f;
 			break;
-		case 33: case 45: case 57: case 69: case 81: case 93: case 105:
+		case 9:
 			label.text = "" + MIDI + ": A";
 			break;
-		case 34: case 46: case 58: case 70: case 82: case 94: case 106:
+		case 10:
 			label.text = "" + MIDI + ": Bb/A#";
 				BulletPatterns.TargetedPattern2 ();
 				effectiveWait = 0.5f;
 			break;
-		case 35: case 47: case 59: case 71: case 83: case 95: case 107:
+		case 11:
 			label.text = "" + MIDI + ": B";
 			break;
 
