@@ -50,11 +50,13 @@ public class PlayerMovement : MonoBehaviour {
             if(bulletCDTimer >= bulletCD) {
 
                 Instantiate(bullet, transform);
+                bulletCDTimer = 0;
 
             }
             else {
 
                 bulletCDTimer += Time.deltaTime;
+                
 
             }
 

@@ -8,7 +8,7 @@ public class Guitarcade : MonoBehaviour {
 	public Text label;
 	public Guitarput input;
 	public int maxHealth;
-	private int currentHealth;
+	public int currentHealth;
 	//public BulletPatterns patternList;
 	public float analysisWait;
 	private float effectiveWait;
