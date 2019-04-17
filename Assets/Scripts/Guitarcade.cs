@@ -12,6 +12,7 @@ public class Guitarcade : MonoBehaviour {
 	public float analysisWait;
 	private float effectiveWait;
 	public bool canFire;
+    private int previousMIDI;
 
 
 
@@ -24,13 +25,21 @@ public class Guitarcade : MonoBehaviour {
 
 	void Update(){
 
-		if(canFire){
-			int MIDI = input.FrequencyToMIDI (input.Analyze ());
+        int MIDI = input.FrequencyToMIDI(input.Analyze());
+
+        if(!canFire && MIDI != previousMIDI && analysisWait > 0.16f) {
+
+            canFire = true;
+
+        }
+
+        if (canFire){
 
 				if (Input.GetKey (KeyCode.E))
 					BulletPatterns.SplitterPattern1 ();
 
 			int temp = MIDI % 12;
+            previousMIDI = MIDI;
 		
 
 			switch (MIDI) {
