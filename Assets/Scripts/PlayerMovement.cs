@@ -7,7 +7,8 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 
-	public float moveSpeed, invulTimer, invulMax;
+	public float moveSpeed, invulTimer, invulMax, bulletCDTimer, bulletCD;
+    public GameObject bullet;
 	public int lives;
 	public bool wasDamaged;
 
@@ -15,16 +16,16 @@ public class PlayerMovement : MonoBehaviour {
 	void Update(){
 
 
-		if (Input.GetKey (KeyCode.D) && transform.position.x < 9f)
+		if (Input.GetKey (KeyCode.D) && transform.position.x < 8.8f)
 			transform.Translate (new Vector2 (1, 0) * moveSpeed * Time.deltaTime);
 
-		if (Input.GetKey (KeyCode.A) && transform.position.x > -9f)
+		if (Input.GetKey (KeyCode.A) && transform.position.x > -8.8f)
 			transform.Translate (new Vector2 (-1, 0) * moveSpeed * Time.deltaTime);
 
-		if (Input.GetKey (KeyCode.S) && transform.position.y > -5f)
+		if (Input.GetKey (KeyCode.S) && transform.position.y > -4.8f)
 			transform.Translate (new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
 
-		if (Input.GetKey (KeyCode.W) && transform.position.y < 5f)
+		if (Input.GetKey (KeyCode.W) && transform.position.y < 4.8f)
 			transform.Translate (new Vector2 (0, 1) * moveSpeed * Time.deltaTime);
 
 		if(wasDamaged){
@@ -38,8 +39,36 @@ public class PlayerMovement : MonoBehaviour {
 			}
 
 		}
-	
-	}
+
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) {
+
+            Instantiate(bullet, transform);
+        
+        }
+        else if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) { 
+        
+            if(bulletCDTimer >= bulletCD) {
+
+                Instantiate(bullet, transform);
+
+            }
+            else {
+
+                bulletCDTimer += Time.deltaTime;
+
+            }
+
+        }
+        else {
+
+            bulletCDTimer = 0;
+        
+        }
+
+
+
+
+    }
 
 	void GameOver(){}
 
