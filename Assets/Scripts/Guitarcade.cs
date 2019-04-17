@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Guitarcade : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class Guitarcade : MonoBehaviour {
 	private float effectiveWait;
 	public bool canFire;
     private int previousMIDI;
+    public int winScene;
 
 
 
@@ -141,7 +143,7 @@ public class Guitarcade : MonoBehaviour {
 
 	}
 
-	void GameOver(){}
+	void GameOver(){ SceneManager.LoadScene(winScene); }
 
 	
 }
