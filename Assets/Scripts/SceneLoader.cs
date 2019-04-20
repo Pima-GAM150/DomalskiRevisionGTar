@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneLoader;
+using UnityEngine.SceneManagement;
 
-public class SceneLoader
+public class SceneLoader : MonoBehaviour
 {
     
     public static void LoadScene(int x){
