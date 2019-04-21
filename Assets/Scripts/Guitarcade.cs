@@ -144,6 +144,22 @@ public class Guitarcade : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 
+		if(collision.gameObject.tag.Equals("Player")){
+
+
+			currentHealth = currentHealth - 1;
+			if(currentHealth <= 0){
+
+				GameOver();
+
+			}
+
+		}
+
+	}
+
+	void OnTriggerEnter2D(Collider2D collision){
+
 
 		if(collision.gameObject.tag.Equals("PlayerBullet")){
 
