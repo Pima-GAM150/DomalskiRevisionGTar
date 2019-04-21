@@ -12,7 +12,13 @@ public class BulletPatterns : MonoBehaviour {
 	public static GameObject basicBullet, splitBullet;
 	private static Vector3 gPos, sPos;
 
-	void Start(){gPos = gTar.GetComponent<Transform>().position; }
+	void Start(){
+
+		ship = GameObject.Find("Player");
+		basicBullet = (GameObject)Resources.Load("Bullet");
+		splitBullet = (GameObject)Resources.Load("Splitter Bullet");
+		gTar = GameObject.Find("Note Detector");
+		gPos = gTar.GetComponent<Transform>().position; }
 
 	public static void spawnBullet(float xDir, float yDir, GameObject bulletType, Vector3 spawn){
 
@@ -26,7 +32,7 @@ public class BulletPatterns : MonoBehaviour {
 
 		GameObject x = (GameObject)Instantiate (bulletType, spawn, Quaternion.identity);
 		SplitBulletMovement y = x.GetComponent<SplitBulletMovement> ();
-		y.isActivated = true;
+		//y.isActivated = true;
 		y.xDir = xDir;
 		y.yDir = yDir;
 

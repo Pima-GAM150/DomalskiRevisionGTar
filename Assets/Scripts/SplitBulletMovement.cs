@@ -28,7 +28,7 @@ public class SplitBulletMovement : MonoBehaviour {
 
 			if (Random.Range(0, 200) == 1/*splitTimer >= 1.2f*/) {
 
-				if (boolet.tag.Equals ("BasicBullet")) {
+				if (boolet.name.Equals ("Bullet")) {
 					//isActivated = false;
 					BulletPatterns.spawnBullet (xDir, yDir, boolet, transform.position);
 					BulletPatterns.spawnBullet (-1 * xDir, yDir, boolet, transform.position);

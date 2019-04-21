@@ -7,6 +7,7 @@ public class Guitarcade : MonoBehaviour {
 
 	public Text label;
 	public Guitarput input;
+	public int MIDI;
 	public int maxHealth;
 	public int currentHealth;
 	//public BulletPatterns patternList;
@@ -27,9 +28,9 @@ public class Guitarcade : MonoBehaviour {
 
 	void Update(){
 
-        int MIDI = input.FrequencyToMIDI(input.Analyze());
+        MIDI = input.FrequencyToMIDI(input.Analyze());
 
-        if(!canFire && MIDI != previousMIDI && analysisWait > 0.16f) {
+        if(!canFire && MIDI != previousMIDI && analysisWait > 0.33f) {
 
             canFire = true;
 
@@ -44,7 +45,7 @@ public class Guitarcade : MonoBehaviour {
             previousMIDI = MIDI;
 		
 
-			switch (MIDI) {
+			switch (temp) {
 			case 0:
 				label.text = "" + MIDI + ": C";
 					BulletPatterns.TargetedPattern3 ();
@@ -53,6 +54,9 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 1:
 				label.text = "" + MIDI + ": Db/C#";
+				BulletPatterns.SplitterPattern1();
+					effectiveWait = 1.2f;
+					canFire = false;
 				break;
 			case 2:
 				label.text = "" + MIDI + ": D";
@@ -68,6 +72,9 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 4:
 				label.text = "" + MIDI + ": E";
+				BulletPatterns.CirclePattern1 ();
+					effectiveWait = 0.6f;
+					canFire = false;
 
 				break;
 			case 5:
@@ -78,6 +85,9 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 6:
 				label.text = "" + MIDI + ": Gb/F#";
+				BulletPatterns.CirclePattern2 ();
+					effectiveWait = 0.6f;
+					canFire = false;
 				break;
 			case 7:
 				label.text = "" + MIDI + ": G";
@@ -93,6 +103,9 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 9:
 				label.text = "" + MIDI + ": A";
+				BulletPatterns.TargetedPattern3 ();
+					effectiveWait = 0.6f;
+					canFire = false;
 				break;
 			case 10:
 				label.text = "" + MIDI + ": Bb/A#";
@@ -102,6 +115,9 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 11:
 				label.text = "" + MIDI + ": B";
+				BulletPatterns.TargetedPattern2 ();
+					effectiveWait = 0.3f;
+					canFire = false;
 				break;
 
 			default:
