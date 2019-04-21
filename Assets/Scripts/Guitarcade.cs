@@ -30,11 +30,11 @@ public class Guitarcade : MonoBehaviour {
 
         MIDI = input.FrequencyToMIDI(input.Analyze());
 
-        if(!canFire && MIDI != previousMIDI && analysisWait > 0.33f) {
+        //if(!canFire && MIDI != previousMIDI && analysisWait > 0.33f) {
 
-            canFire = true;
+          //  canFire = true;
 
-        }
+        //}
 
         if (canFire){
 
