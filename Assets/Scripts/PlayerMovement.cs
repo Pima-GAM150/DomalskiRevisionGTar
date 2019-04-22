@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 
@@ -7,14 +8,25 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 
-	public float moveSpeed, invulTimer, invulMax, bulletCDTimer, bulletCD;
+	public float moveSpeed, invulTimer, invulMax, bulletCDTimer, bulletCD, flashTimer;
+	public SpriteRenderer self;
+	public Text lifeText;
     public GameObject bullet;
 	public int lives;
 	public bool wasDamaged;
+	public Color flashColour = new Color(1f, 0f, 0f, 0.1f), playerColor; 
+	AudioSource playerAudio;
 
+    void Start(){
+
+    	playerAudio = GetComponent<AudioSource>();
+    	self.color = playerColor;
+
+    }
 	
 	void Update(){
 
+		lifeText.text = "lives: " + lives;
 
 		if (Input.GetKey (KeyCode.D) && transform.position.x < 8.8f)
 			transform.Translate (new Vector2 (1, 0) * moveSpeed * Time.deltaTime);
@@ -39,6 +51,20 @@ public class PlayerMovement : MonoBehaviour {
 			}
 
 		}
+
+		if(wasDamaged && flashTimer > 0.25f){
+
+			flashTimer = 0f;
+			self.color = flashColour;
+
+		}
+		else{
+
+			self.color = playerColor;
+
+		}
+
+		flashTimer += Time.deltaTime;
 
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) {
 
@@ -72,7 +98,7 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
-	void GameOver(){}
+	void GameOver(){SceneManager.LoadScene(0);}
 
 	void OnCollisionEnter2D(Collision2D collision){
 
@@ -85,6 +111,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			}
 
+			playerAudio.Play();
 			wasDamaged = true;
 			invulTimer = 0;
 

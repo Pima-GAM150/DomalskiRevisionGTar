@@ -7,6 +7,7 @@ public class Guitarcade : MonoBehaviour {
 
 	public Text label;
 	public Guitarput input;
+	public GameObject healthBar;
 	public int MIDI;
 	public int maxHealth;
 	public int currentHealth;
@@ -35,6 +36,7 @@ public class Guitarcade : MonoBehaviour {
           //  canFire = true;
 
         //}
+        healthBar.transform.localScale = new Vector3(1f, (1f / maxHealth) * currentHealth, 1f);
 
         if (canFire){
 
