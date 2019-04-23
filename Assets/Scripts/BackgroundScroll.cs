@@ -15,7 +15,7 @@ public class BackgroundScroll : MonoBehaviour
 
         if(transform.position.y <= (-0.5f * size)+ 5) {
 
-            transform.Translate(0, (size * 0.5f) - 5f, 0);
+            transform.Translate(0, (size * -0.5f) + 5f, 0);
 
         }
 
