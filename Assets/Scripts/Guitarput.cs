@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Guitarput : MonoBehaviour {
 
@@ -15,6 +16,14 @@ public class Guitarput : MonoBehaviour {
 	}
 
 	void Update(){
+
+		if(!audio.isPlaying){
+
+			SceneManager.LoadScene(1);
+
+		}
+
+
 	}
 
 	public float Analyze(){
