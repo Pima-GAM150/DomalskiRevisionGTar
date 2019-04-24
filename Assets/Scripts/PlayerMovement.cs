@@ -68,14 +68,16 @@ public class PlayerMovement : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) {
 
-            Instantiate(bullet, transform);
+            GameObject tempo = Instantiate(bullet, transform);
+            tempo.transform.parent = null;
         
         }
         else if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) { 
         
             if(bulletCDTimer >= bulletCD) {
 
-                Instantiate(bullet, transform);
+               GameObject tempo = Instantiate(bullet, transform);
+                tempo.transform.parent = null;
                 bulletCDTimer = 0;
 
             }
@@ -103,7 +105,7 @@ public class PlayerMovement : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision){
 
 		if(collision.gameObject.tag.Equals("Bullet") && !wasDamaged){
-
+            Debug.Log(collision.gameObject.name);
 			lives--;
 			if(lives < 0){
 
