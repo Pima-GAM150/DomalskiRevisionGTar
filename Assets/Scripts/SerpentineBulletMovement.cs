@@ -14,10 +14,12 @@ public class SerpentineBulletMovement : MonoBehaviour{
 		perp = new Vector2(1f, ((-1f * xdir)/ ydir));
 		perp.Normalize();
 		//Debug.Log(perp);
+
 		//get unit vector of direction
 		dir = new Vector2(xdir, ydir);
 		dir.Normalize();
 		//Debug.Log(dir);
+
 	}
 
 	void Update(){
@@ -46,7 +48,7 @@ public class SerpentineBulletMovement : MonoBehaviour{
 			timer = 0f;
 
 		if(transform.position.x > 11 || transform.position.x < -11 || transform.position.y > 8 || transform.position.y < -8)
-			Destroy(this);
+			Destroy(gameObject);
 	}
     
 }
