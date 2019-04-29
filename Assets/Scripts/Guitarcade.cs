@@ -63,7 +63,7 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 2:
 				label.text = "" + MIDI + ": D";
-					BulletPatterns.SplitterPattern1();
+					BulletPatterns.SerpentinePattern1();
 					effectiveWait = 1.2f;
 					canFire = false;
 				break;
@@ -82,7 +82,7 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 5:
 				label.text = "" + MIDI + ": F";
-					BulletPatterns.CirclePattern1 ();
+					BulletPatterns.SerpentinePattern2 ();
 					effectiveWait = 0.6f;
 					canFire = false;
 				break;

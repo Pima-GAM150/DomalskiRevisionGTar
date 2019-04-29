@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-
+using System;
 using System.Collections;
 
 
@@ -9,7 +8,7 @@ public class BulletPatterns : MonoBehaviour {
 
 
 	public static GameObject gTar, ship;
-	public static GameObject basicBullet, splitBullet;
+	public static GameObject basicBullet, splitBullet, tarPat1, tarPat2, serpPat1, serpPat2;
 	private static Vector3 gPos, sPos;
 
 	void Start(){
@@ -17,6 +16,10 @@ public class BulletPatterns : MonoBehaviour {
 		ship = GameObject.Find("Player");
 		basicBullet = (GameObject)Resources.Load("Bullet");
 		splitBullet = (GameObject)Resources.Load("Splitter Bullet");
+		tarPat1 = (GameObject)Resources.Load("TargetedBulletPattern1");
+		tarPat2 = (GameObject)Resources.Load("TargetedBulletPattern2");
+		serpPat1 = (GameObject)Resources.Load("SerpentinePattern1");
+		serpPat2 = (GameObject)Resources.Load("SerpentinePattern2");
 		gTar = GameObject.Find("Note Detector");
 		gPos = gTar.GetComponent<Transform>().position; }
 
@@ -77,25 +80,33 @@ public class BulletPatterns : MonoBehaviour {
 
 	public static void TargetedPattern1(){
 
-		sPos = ship.GetComponent<Transform>().position;
-		Vector3 normal = new Vector3 (sPos.x - gPos.x, sPos.y - gPos.y);
-		normal = normal / normal.magnitude;
-		float angle = Mathf.Asin (normal.y);
-		spawnBullet (Mathf.Cos (angle + 16), -1 * Mathf.Sin (angle + 16), basicBullet);
-		spawnBullet (Mathf.Cos (angle - 16), -1 * Mathf.Sin (angle - 16), basicBullet);
-		spawnBullet (normal.x, normal.y, basicBullet);
+		GameObject temp = (GameObject)Instantiate(tarPat1, gPos, Quaternion.Identity);
+
+		bool negative = (gPos.position.x < ship.transform.position.x);
+		float tempx = Mathf.Abs(gPos.position.x - ship.transform.position.x);
+		float tempy = gPos.position.y - ship.transform.position.y;
+		float rotation = Mathf.Atan(tempx / tempy) * 180f / Mathf.PI;
+
+		if(!negative)
+			rotation = rotation * -1f;
+
+		temp.transform.Rotate(0f, 0f, rotation);
+
 	}
 
 	public static void TargetedPattern2(){
 
-		sPos = ship.GetComponent<Transform>().position;
-		Vector3 normal = new Vector3 (sPos.x - gPos.x, sPos.y - gPos.y);
-		normal = normal / normal.magnitude;
-		float angle = Mathf.Asin (normal.y);
-		spawnBullet (Mathf.Cos (angle + 8), Mathf.Sin (angle + 8), basicBullet);
-		spawnBullet (Mathf.Cos (angle - 8), Mathf.Sin (angle - 8), basicBullet);
-		spawnBullet (Mathf.Cos (angle + 24), Mathf.Sin (angle + 24), basicBullet);
-		spawnBullet (Mathf.Cos (angle - 24), Mathf.Sin (angle - 24), basicBullet);
+		GameObject temp = (GameObject)Instantiate(tarPat2, gPos, Quaternion.Identity);
+
+		bool negative = (gPos.position.x < ship.transform.position.x);
+		float tempx = Mathf.Abs(gPos.position.x - ship.transform.position.x);
+		float tempy = gPos.position.y - ship.transform.position.y;
+		float rotation = Mathf.Atan(tempx / tempy) * 180f / Mathf.PI;
+
+		if(!negative)
+			rotation = rotation * -1f;
+
+		temp.transform.Rotate(0f, 0f, rotation);
 	}
 
 	public static void TargetedPattern3(){
@@ -114,6 +125,18 @@ public class BulletPatterns : MonoBehaviour {
 		TargetedPattern3BulletSpawner (sPos.x, sPos.y - 6, basicBullet);
 		TargetedPattern3BulletSpawner (sPos.x + root3Side, sPos.y - 3, basicBullet);
 		TargetedPattern3BulletSpawner (sPos.x + 3, sPos.y - root3Side, basicBullet);
+	}
+
+	public static void SerpentinePattern1(){
+
+		Instantiate(serpPat1, gPos, Quaternion.Identity);
+
+	}
+
+	public static void SerpentinePattern2(){
+
+		Instantiate(serpPat2, gPos, Quaternion.Identity)
+
 	}
 
 	public static void SplitterPattern1(){
