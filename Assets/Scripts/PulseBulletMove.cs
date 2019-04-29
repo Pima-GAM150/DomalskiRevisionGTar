@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PulseBulletMove : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PulseBulletMove : MonoBehaviour
     // Update is called once per frame
     void Update(){
 
-    	float pulsar = Math.Sin(timer);
+    	float pulsar = (float)Math.Sin(timer);
     	transform.Translate(new Vector3(xdir, ydir).normalized * ((pulsar + speed) * speed));
         timer += Time.deltaTime;
         if(timer > 2f * Math.PI)

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -24,6 +24,7 @@ public class Guitarcade : MonoBehaviour {
 		effectiveWait = analysisWait;
 		currentHealth = maxHealth;
 		//StartCoroutine(PatternController());
+		
 	
 	}
 
