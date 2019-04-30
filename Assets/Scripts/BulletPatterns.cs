@@ -80,11 +80,11 @@ public class BulletPatterns : MonoBehaviour {
 
 	public static void TargetedPattern1(){
 
-		GameObject temp = (GameObject)Instantiate(tarPat1, gPos, Quaternion.Identity);
+		GameObject temp = (GameObject)Instantiate(tarPat1, gPos, Quaternion.identity);
 
-		bool negative = (gPos.position.x < ship.transform.position.x);
-		float tempx = Mathf.Abs(gPos.position.x - ship.transform.position.x);
-		float tempy = gPos.position.y - ship.transform.position.y;
+		bool negative = (gPos.x < ship.transform.position.x);
+		float tempx = Mathf.Abs(gPos.x - ship.transform.position.x);
+		float tempy = gPos.y - ship.transform.position.y;
 		float rotation = Mathf.Atan(tempx / tempy) * 180f / Mathf.PI;
 
 		if(!negative)
@@ -96,11 +96,11 @@ public class BulletPatterns : MonoBehaviour {
 
 	public static void TargetedPattern2(){
 
-		GameObject temp = (GameObject)Instantiate(tarPat2, gPos, Quaternion.Identity);
+		GameObject temp = (GameObject)Instantiate(tarPat2, gPos, Quaternion.identity);
 
-		bool negative = (gPos.position.x < ship.transform.position.x);
-		float tempx = Mathf.Abs(gPos.position.x - ship.transform.position.x);
-		float tempy = gPos.position.y - ship.transform.position.y;
+		bool negative = (gPos.x < ship.transform.position.x);
+		float tempx = Mathf.Abs(gPos.x - ship.transform.position.x);
+		float tempy = gPos.y - ship.transform.position.y;
 		float rotation = Mathf.Atan(tempx / tempy) * 180f / Mathf.PI;
 
 		if(!negative)
@@ -129,13 +129,13 @@ public class BulletPatterns : MonoBehaviour {
 
 	public static void SerpentinePattern1(){
 
-		Instantiate(serpPat1, gPos, Quaternion.Identity);
+		Instantiate(serpPat1, gPos, Quaternion.identity);
 
 	}
 
 	public static void SerpentinePattern2(){
 
-		Instantiate(serpPat2, gPos, Quaternion.Identity)
+		Instantiate(serpPat2, gPos, Quaternion.identity);
 
 	}
 
