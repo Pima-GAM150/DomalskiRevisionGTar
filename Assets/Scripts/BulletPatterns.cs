@@ -8,7 +8,7 @@ public class BulletPatterns : MonoBehaviour {
 
 
 	public static GameObject gTar, ship;
-	public static GameObject basicBullet, splitBullet, tarPat1, tarPat2, serpPat1, serpPat2;
+	public static GameObject basicBullet, splitBullet, tarPat1, tarPat2, serpPat1, serpPat2, pulPat1, pulPat2;
 	private static Vector3 gPos, sPos;
 
 	void Start(){
@@ -18,6 +18,8 @@ public class BulletPatterns : MonoBehaviour {
 		splitBullet = (GameObject)Resources.Load("Splitter Bullet");
 		tarPat1 = (GameObject)Resources.Load("TargetedBulletPattern1");
 		tarPat2 = (GameObject)Resources.Load("TargetedBulletPattern2");
+		pulPat1 = (GameObject)Resources.Load("PulsingBulletPattern1");
+		pulPat2 = (GameObject)Resources.Load("PulsingBulletPattern2");
 		serpPat1 = (GameObject)Resources.Load("SerpentinePattern1");
 		serpPat2 = (GameObject)Resources.Load("SerpentinePattern2");
 		gTar = GameObject.Find("Note Detector");
@@ -47,6 +49,18 @@ public class BulletPatterns : MonoBehaviour {
 		BasicBulletMovement y = x.GetComponent<BasicBulletMovement> ();
 		y.xDir = xDir;
 		y.yDir = yDir;
+	}
+
+	public static void PulsingBulletPattern1(){
+
+		Instantiate(pulPat1, gPos, Quaternion.identity);
+
+	}
+
+	public static void PulsingBulletPattern2(){
+
+		Instantiate(pulPat2, gPos, Quaternion.identity);
+
 	}
 
 	public static void CirclePattern1(){
