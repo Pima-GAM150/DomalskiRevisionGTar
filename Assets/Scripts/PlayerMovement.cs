@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool wasDamaged;
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f), playerColor; 
 	AudioSource playerAudio;
+	public AudioSource shootAudio;
 
     void Start(){
 
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour {
 
             GameObject tempo = Instantiate(bullet, transform);
             tempo.transform.parent = null;
+            shootAudio.Play();
         
         }
         else if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) { 
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour {
                GameObject tempo = Instantiate(bullet, transform);
                 tempo.transform.parent = null;
                 bulletCDTimer = 0;
+                shootAudio.Play();
 
             }
             else {
