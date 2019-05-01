@@ -199,23 +199,29 @@ public class Guitarcade : MonoBehaviour {
 	void ChargeLaser(){
 
 		charging = true;
+		
 		charger.SetActive(true);
 		timerChar = 0;
 		min = 0.1f;
+		charger.GetComponent<AudioSource>().Play();
 
 	}
 	void FireLaser(){
 
 		charging = false;
+		
 		firing = true;
 		posDir = true;
 		calc = 0;
 		laser.SetActive(true);
 		min = 0.2f;
+		charger.GetComponent<AudioSource>().Stop();
+		laser.GetComponent<AudioSource>().Play();
 
 	}
 	void EndLaser(){
 
+		laser.GetComponent<AudioSource>().Stop();
 		charger.SetActive(false);
 		laser.SetActive(false);
 		firing = false;
