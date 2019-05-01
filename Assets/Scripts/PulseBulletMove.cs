@@ -14,6 +14,8 @@ public class PulseBulletMove : MonoBehaviour
         timer += Time.deltaTime * timerMult;
         if(timer > 2f * Math.PI)
         	timer = 0f;
+        if(transform.position.x > 11 || transform.position.x < -11 || transform.position.y > 8 || transform.position.y < -8)
+			Destroy(gameObject);
 
     }
 }
