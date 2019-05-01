@@ -8,7 +8,7 @@ public class BulletPatterns : MonoBehaviour {
 
 
 	public static GameObject gTar, ship;
-	public static GameObject basicBullet, splitBullet, tarPat1, tarPat2, serpPat1, serpPat2, pulPat1, pulPat2;
+	public static GameObject basicBullet, splitBullet, tarPat1, tarPat2, serpPat1, serpPat2, pulPat1, pulPat2, pat1, pat2, splitPat;
 	private static Vector3 gPos, sPos;
 
 	void Start(){
@@ -20,7 +20,10 @@ public class BulletPatterns : MonoBehaviour {
 		tarPat2 = (GameObject)Resources.Load("TargetedBulletPattern2");
 		pulPat1 = (GameObject)Resources.Load("PulsingBulletPattern1");
 		pulPat2 = (GameObject)Resources.Load("PulsingBulletPattern2");
-		serpPat1 = (GameObject)Resources.Load("SerpentinePattern1");
+        splitPat = (GameObject)Resources.Load("SplitPattern");
+        pat1 = (GameObject)Resources.Load("Pattern1");
+        pat2 = (GameObject)Resources.Load("Pattern2");
+        serpPat1 = (GameObject)Resources.Load("SerpentinePattern1");
 		serpPat2 = (GameObject)Resources.Load("SerpentinePattern2");
 		gTar = GameObject.Find("Note Detector");
 		gPos = gTar.GetComponent<Transform>().position; }
@@ -52,45 +55,26 @@ public class BulletPatterns : MonoBehaviour {
 	}
 
 	public static void PulsingBulletPattern1(){
-
-		Instantiate(pulPat1, gPos, Quaternion.identity);
+        gPos = gTar.GetComponent<Transform>().position;
+        Instantiate(pulPat1, gPos, Quaternion.identity);
 
 	}
 
 	public static void PulsingBulletPattern2(){
-
-		Instantiate(pulPat2, gPos, Quaternion.identity);
+        gPos = gTar.GetComponent<Transform>().position;
+        Instantiate(pulPat2, gPos, Quaternion.identity);
 
 	}
 
 	public static void CirclePattern1(){
-
-		spawnBullet (-1f, 0f, basicBullet);
-		spawnBullet (1f, 0f, basicBullet);
-		spawnBullet (-0.951f, -0.309f, basicBullet);
-		spawnBullet (-0.809f, -0.5878f, basicBullet);
-		spawnBullet (-0.5878f, -0.809f, basicBullet);
-		spawnBullet (-0.309f, -0.951f, basicBullet);
-		spawnBullet (0f, -1f, basicBullet);
-		spawnBullet (0.309f, -0.951f, basicBullet);
-		spawnBullet (0.951f, -0.309f, basicBullet);
-		spawnBullet (0.809f, -0.5878f, basicBullet);
-		spawnBullet (0.5878f, -0.809f, basicBullet);
+        gPos = gTar.GetComponent<Transform>().position;
+        Instantiate(pat1, gPos, Quaternion.identity);
 	}
 
 	public static void CirclePattern2(){
-
-		spawnBullet (-0.9877f, -0.1564f, basicBullet);
-		spawnBullet (0.9877f, -0.1564f, basicBullet);
-		spawnBullet (-0.1564f, -0.9877f, basicBullet);
-		spawnBullet (0.1564f, -0.9877f, basicBullet);
-		spawnBullet (-0.454f, -0.891f, basicBullet);
-		spawnBullet (-0.891f, -0.454f, basicBullet);
-		spawnBullet (0.454f, -0.891f, basicBullet);
-		spawnBullet (0.891f, -0.454f, basicBullet);
-		spawnBullet (-0.7071f, -0.7071f, basicBullet);
-		spawnBullet (0.7071f, -0.7071f, basicBullet);
-	}
+        gPos = gTar.GetComponent<Transform>().position;
+        Instantiate(pat2, gPos, Quaternion.identity);
+    }
 
 	public static void TargetedPattern1(){
 		gPos = gTar.GetComponent<Transform>().position;
@@ -155,17 +139,7 @@ public class BulletPatterns : MonoBehaviour {
 
 	public static void SplitterPattern1(){
 		gPos = gTar.GetComponent<Transform>().position;
-		spawnSplitterBullet (-1f, 0f, splitBullet, gPos);
-		spawnSplitterBullet (1f, 0f, splitBullet, gPos);
-		spawnSplitterBullet (-0.951f, -0.309f, splitBullet, gPos);
-		spawnSplitterBullet (-0.809f, -0.5878f, splitBullet, gPos);
-		spawnSplitterBullet (-0.5878f, -0.809f, splitBullet, gPos);
-		spawnSplitterBullet (-0.309f, -0.951f, splitBullet, gPos);
-		spawnSplitterBullet (0f, -1f, splitBullet, gPos);
-		spawnSplitterBullet (0.309f, -0.951f, splitBullet, gPos);
-		spawnSplitterBullet (0.951f, -0.309f, splitBullet, gPos);
-		spawnSplitterBullet (0.809f, -0.5878f, splitBullet, gPos);
-		spawnSplitterBullet (0.5878f, -0.809f, splitBullet, gPos);
+        Instantiate(splitPat, gPos, Quaternion.identity);
 
 	}
 
