@@ -89,15 +89,17 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 6:
 				label.text = "" + MIDI + ": Gb/F#";
-				BulletPatterns.CirclePattern2 ();
+					BulletPatterns.CirclePattern2 ();
 					effectiveWait = min + 0.6f;
 					canFire = false;
 				break;
 			case 7:
 				label.text = "" + MIDI + ": G";
-					BulletPatterns.CirclePattern2 ();
-					effectiveWait = min + 0.6f;
-					canFire = false;
+				if(!charging && !firing)
+					ChargeLaser ();
+				BulletPatterns.CirclePattern2 ();
+				effectiveWait = min + 0.6f;
+				canFire = false;
 				break;
 			case 8:
 				label.text = "" + MIDI + ": Ab/G#";
@@ -159,6 +161,8 @@ public class Guitarcade : MonoBehaviour {
 			if(posDir){
 
 				transform.Translate(Vector3.right * speed);
+				charger.transform.Translate(Vector3.right * speed);
+				laser.transform.Translate(Vector3.right * speed);
 				if(transform.position.x > consMax){
 
 					posDir = false;
@@ -170,6 +174,8 @@ public class Guitarcade : MonoBehaviour {
 			else{
 
 				transform.Translate(Vector3.left * speed);
+				charger.transform.Translate(Vector3.left * speed);
+				laser.transform.Translate(Vector3.left * speed);
 				if(transform.position.x < consMin){
 
 					posDir = true;
@@ -219,7 +225,7 @@ public class Guitarcade : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 
-		if(collision.gameObject.tag.Equals("Player")){
+		if(collision.gameObject.tag.Equals("PlayerBullet")){
 
 
 			currentHealth = currentHealth - 1;
