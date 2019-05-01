@@ -93,7 +93,7 @@ public class BulletPatterns : MonoBehaviour {
 	}
 
 	public static void TargetedPattern1(){
-
+		gPos = gTar.GetComponent<Transform>().position;
 		GameObject temp = (GameObject)Instantiate(tarPat1, gPos, Quaternion.identity);
 
 		bool negative = (gPos.x < ship.transform.position.x);
@@ -109,7 +109,7 @@ public class BulletPatterns : MonoBehaviour {
 	}
 
 	public static void TargetedPattern2(){
-
+		gPos = gTar.GetComponent<Transform>().position;
 		GameObject temp = (GameObject)Instantiate(tarPat2, gPos, Quaternion.identity);
 
 		bool negative = (gPos.x < ship.transform.position.x);
@@ -142,19 +142,19 @@ public class BulletPatterns : MonoBehaviour {
 	}
 
 	public static void SerpentinePattern1(){
-
+		gPos = gTar.GetComponent<Transform>().position;
 		Instantiate(serpPat1, gPos, Quaternion.identity);
 
 	}
 
 	public static void SerpentinePattern2(){
-
+		gPos = gTar.GetComponent<Transform>().position;
 		Instantiate(serpPat2, gPos, Quaternion.identity);
 
 	}
 
 	public static void SplitterPattern1(){
-
+		gPos = gTar.GetComponent<Transform>().position;
 		spawnSplitterBullet (-1f, 0f, splitBullet, gPos);
 		spawnSplitterBullet (1f, 0f, splitBullet, gPos);
 		spawnSplitterBullet (-0.951f, -0.309f, splitBullet, gPos);
@@ -170,7 +170,7 @@ public class BulletPatterns : MonoBehaviour {
 	}
 
 	static void TargetedPattern3BulletSpawner(float xPos, float yPos, GameObject bulletType){
-
+		
 		Vector3 normal = new Vector3 (sPos.x - xPos, sPos.y - yPos);
 		normal = normal / normal.magnitude;
 		GameObject x = (GameObject)Instantiate (bulletType, new Vector3 (xPos, yPos), Quaternion.identity);

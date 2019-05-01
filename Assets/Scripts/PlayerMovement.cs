@@ -53,13 +53,17 @@ public class PlayerMovement : MonoBehaviour {
 
 		}
 
-		if(wasDamaged && flashTimer > 0.25f){
+		if(wasDamaged && flashTimer > 0.11f){
 
 			flashTimer = 0f;
-			self.color = flashColour;
+			if(self.color == playerColor)
+				self.color = flashColour;
+			else
+				self.color = playerColor;
 
 		}
-		else{
+		else if(!wasDamaged){
+
 
 			self.color = playerColor;
 

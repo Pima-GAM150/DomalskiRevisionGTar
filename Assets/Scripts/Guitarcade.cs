@@ -11,6 +11,7 @@ public class Guitarcade : MonoBehaviour {
 	public int MIDI;
 	public int maxHealth;
 	public int currentHealth, calc;
+	float laserTimer = 0;
 	//public BulletPatterns patternList;
 	public float analysisWait, timerChar, consMin, consMax, min, timerMax, speed;
 	private float effectiveWait;
@@ -30,6 +31,8 @@ public class Guitarcade : MonoBehaviour {
 	}
 
 	void Update(){
+
+		laserTimer += Time.deltaTime;
 
         MIDI = input.FrequencyToMIDI(input.Analyze());
 
@@ -95,7 +98,7 @@ public class Guitarcade : MonoBehaviour {
 				break;
 			case 7:
 				label.text = "" + MIDI + ": G";
-				if(!charging && !firing)
+				if(!charging && !firing && laserTimer > 10f)
 					ChargeLaser ();
 				BulletPatterns.CirclePattern2 ();
 				effectiveWait = min + 0.6f;
@@ -226,6 +229,7 @@ public class Guitarcade : MonoBehaviour {
 		laser.SetActive(false);
 		firing = false;
 		min = 0f;
+		laserTimer = 0f;
 
 	}
 
